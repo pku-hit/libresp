@@ -7,5 +7,6 @@ steps:
 
 - name: drone-test
   image: alpine
+  settings: 172.18.0.1
   commands:
   - echo "test drone ci"
