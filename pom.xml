@@ -2,7 +2,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.taotechip.opensvc</groupId>
+    <groupId>com.github.pkuhit.opensvc</groupId>
     <artifactId>lib-resp</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
@@ -25,6 +25,17 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/src/gen/java</directory>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/src/main/proto</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -44,7 +55,7 @@
                     <protocArtifact>com.google.protobuf:protoc:3.5.1-1:exe:${os.detected.classifier}</protocArtifact>
                     <pluginId>grpc-java</pluginId>
                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.11.0:exe:${os.detected.classifier}</pluginArtifact>
-                    <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
+                    <outputDirectory>${basedir}/src/gen/java</outputDirectory>
                     <additionalProtoPathElements>
                         <additionalProtoPathElement>${GOPATH}/src</additionalProtoPathElement>
                     </additionalProtoPathElements>
