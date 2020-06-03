@@ -1,38 +1,38 @@
 package libresp
 
-import any "github.com/golang/protobuf/ptypes/any"
+import "github.com/golang/protobuf/ptypes/any"
 
 func (resp *GenericResponse) IsSuccess() (re bool) {
 	if resp == nil {
 		re = false
 	} else {
-		re = resp.Code == SUCC.Code
+		re = resp.Code == SUCCESS.Code
 	}
 	return
 }
 
-func GenerateGenericResponseSucc(result *any.Any) (resp *GenericResponse) {
-	resp = GenerateGenericResponse(SUCC)
+func (resp *GenericResponse) GenerateGenericResponseSucc(result *any.Any) {
+	resp.GenerateGenericResponse(SUCCESS)
 	resp.Result = result
 	return
 }
 
-func GenerateGenericResponse(code *Response) (resp *GenericResponse) {
-	resp = &GenericResponse{
-		Code: code.Code,
-		Info: code.Info,
+func (resp *GenericResponse) GenerateGenericResponse(code *Response) {
+	if code == nil || resp == nil {
+		return
+	} else {
+		resp.Code = code.Code
+		resp.Info = code.Info
 	}
 	return
 }
 
-func GenerateGenericResponseWithInfo(code *Response, info string) (resp *GenericResponse) {
-	if code == nil {
-		resp = nil
+func (resp *GenericResponse) GenerateGenericResponseWithInfo(code *Response, info string) {
+	if code == nil || resp == nil {
+		return
 	} else {
-		resp = &GenericResponse{
-			Code: code.Code,
-			Info: info,
-		}
+		resp.Code = code.Code
+		resp.Info = info
 	}
 	return
 }

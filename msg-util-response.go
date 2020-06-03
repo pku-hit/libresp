@@ -4,36 +4,32 @@ func (resp *Response) IsSuccess() (re bool) {
 	if resp == nil {
 		re = false
 	} else {
-		re = resp.Code == SUCC.Code
+		re = resp.Code == SUCCESS.Code
 	}
 	return
 }
 
-func GenerateResponseSucc() (resp *Response) {
-	resp = GenerateResponse(SUCC)
+func (resp *Response) GenerateResponseSucc() {
+	resp.GenerateResponse(SUCCESS)
 	return
 }
 
-func GenerateResponseWithInfo(code *Response, info string) (resp *Response) {
-	if code == nil {
-		resp = nil
+func (resp *Response) GenerateResponseWithInfo(code *Response, info string) {
+	if code == nil || resp == nil {
+		return
 	} else {
-		resp = &Response{
-			Code: code.Code,
-			Info: info,
-		}
+		resp.Code = code.Code
+		resp.Info = info
 	}
 	return
 }
 
-func GenerateResponse(code *Response) (resp *Response) {
-	if code == nil {
-		resp = nil
+func (resp *Response) GenerateResponse(code *Response) {
+	if code == nil || resp == nil {
+		return
 	} else {
-		resp = &Response{
-			Code: code.Code,
-			Info: code.Info,
-		}
+		resp.Code = code.Code
+		resp.Info = code.Info
 	}
 	return
 }

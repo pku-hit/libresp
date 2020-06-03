@@ -1,38 +1,38 @@
 package libresp
 
-import any "github.com/golang/protobuf/ptypes/any"
+import "github.com/golang/protobuf/ptypes/any"
 
 func (resp *MapResponse) IsSuccess() (re bool) {
 	if resp == nil {
 		re = false
 	} else {
-		re = resp.Code == SUCC.Code
+		re = resp.Code == SUCCESS.Code
 	}
 	return
 }
 
-func GenerateMapResponseSucc(result map[string]*any.Any) (resp *MapResponse) {
-	resp = GenerateMapResponse(SUCC)
+func (resp *MapResponse) GenerateMapResponseSucc(result map[string]*any.Any) {
+	resp.GenerateMapResponse(SUCCESS)
 	resp.Result = result
 	return
 }
 
-func GenerateMapResponse(code *Response) (resp *MapResponse) {
-	resp = &MapResponse{
-		Code: code.Code,
-		Info: code.Info,
+func (resp *MapResponse) GenerateMapResponse(code *Response) {
+	if code == nil || resp == nil {
+		return
+	} else {
+		resp.Code = code.Code
+		resp.Info = code.Info
 	}
 	return
 }
 
-func GenerateMapResponseWithInfo(code *Response, info string) (resp *MapResponse) {
-	if code == nil {
-		resp = nil
+func (resp *MapResponse) GenerateMapResponseWithInfo(code *Response, info string) {
+	if code == nil || resp == nil {
+		return
 	} else {
-		resp = &MapResponse{
-			Code: code.Code,
-			Info: info,
-		}
+		resp.Code = code.Code
+		resp.Info = info
 	}
 	return
 }
