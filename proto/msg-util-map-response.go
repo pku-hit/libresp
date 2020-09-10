@@ -1,8 +1,8 @@
-package libresp
+package proto
 
 import "github.com/golang/protobuf/ptypes/any"
 
-func (resp *GenericResponse) IsSuccess() (re bool) {
+func (resp *MapResponse) IsSuccess() (re bool) {
 	if resp == nil {
 		re = false
 	} else {
@@ -11,13 +11,13 @@ func (resp *GenericResponse) IsSuccess() (re bool) {
 	return
 }
 
-func (resp *GenericResponse) GenerateGenericResponseSucc(result *any.Any) {
-	resp.GenerateGenericResponse(SUCCESS)
+func (resp *MapResponse) GenerateMapResponseSucc(result map[string]*any.Any) {
+	resp.GenerateMapResponse(SUCCESS)
 	resp.Result = result
 	return
 }
 
-func (resp *GenericResponse) GenerateGenericResponse(code *Response) {
+func (resp *MapResponse) GenerateMapResponse(code *Response) {
 	if code == nil || resp == nil {
 		return
 	} else {
@@ -27,7 +27,7 @@ func (resp *GenericResponse) GenerateGenericResponse(code *Response) {
 	return
 }
 
-func (resp *GenericResponse) GenerateGenericResponseWithInfo(code *Response, info string) {
+func (resp *MapResponse) GenerateMapResponseWithInfo(code *Response, info string) {
 	if code == nil || resp == nil {
 		return
 	} else {

@@ -1,4 +1,4 @@
-package libresp
+package proto
 
 func (resp *Response) IsSuccess() (re bool) {
 	if resp == nil {
