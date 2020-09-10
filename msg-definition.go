@@ -1,4 +1,4 @@
-package proto
+package libresp
 
 var (
 	SUCCESS       = &Response{Code: "RC00000", Info: "成功"}
