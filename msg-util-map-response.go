@@ -1,6 +1,6 @@
 package libresp
 
-import any "github.com/golang/protobuf/ptypes/any"
+import "github.com/golang/protobuf/ptypes/any"
 
 func (resp *MapResponse) IsSuccess() (re bool) {
 	if resp == nil {
@@ -11,28 +11,33 @@ func (resp *MapResponse) IsSuccess() (re bool) {
 	return
 }
 
+<<<<<<< HEAD
 func GenerateMapResponseSucc(result map[string]*any.Any) (resp *MapResponse) {
 	resp = GenerateMapResponse(SUCCESS)
+=======
+func (resp *MapResponse) GenerateMapResponseSucc(result map[string]*any.Any) {
+	resp.GenerateMapResponse(SUCCESS)
+>>>>>>> c031e13b04ab4db207aacb7d2dea9b9c576d4ff3
 	resp.Result = result
 	return
 }
 
-func GenerateMapResponse(code *Response) (resp *MapResponse) {
-	resp = &MapResponse{
-		Code: code.Code,
-		Info: code.Info,
+func (resp *MapResponse) GenerateMapResponse(code *Response) {
+	if code == nil || resp == nil {
+		return
+	} else {
+		resp.Code = code.Code
+		resp.Info = code.Info
 	}
 	return
 }
 
-func GenerateMapResponseWithInfo(code *Response, info string) (resp *MapResponse) {
-	if code == nil {
-		resp = nil
+func (resp *MapResponse) GenerateMapResponseWithInfo(code *Response, info string) {
+	if code == nil || resp == nil {
+		return
 	} else {
-		resp = &MapResponse{
-			Code: code.Code,
-			Info: info,
-		}
+		resp.Code = code.Code
+		resp.Info = info
 	}
 	return
 }
