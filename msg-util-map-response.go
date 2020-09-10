@@ -6,13 +6,13 @@ func (resp *MapResponse) IsSuccess() (re bool) {
 	if resp == nil {
 		re = false
 	} else {
-		re = resp.Code == SUCC.Code
+		re = resp.Code == SUCCESS.Code
 	}
 	return
 }
 
 func GenerateMapResponseSucc(result map[string]*any.Any) (resp *MapResponse) {
-	resp = GenerateMapResponse(SUCC)
+	resp = GenerateMapResponse(SUCCESS)
 	resp.Result = result
 	return
 }

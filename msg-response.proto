@@ -3,6 +3,7 @@ syntax = "proto3";
 option java_package = "com.pkuhit.opensvc.lib.resp";
 option java_multiple_files = true;
 package libresp;
+option go_package = ".;libresp";
 
 import "google/protobuf/any.proto";
 

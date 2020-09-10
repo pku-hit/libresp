@@ -6,13 +6,13 @@ func (resp *GenericResponse) IsSuccess() (re bool) {
 	if resp == nil {
 		re = false
 	} else {
-		re = resp.Code == SUCC.Code
+		re = resp.Code == SUCCESS.Code
 	}
 	return
 }
 
 func GenerateGenericResponseSucc(result *any.Any) (resp *GenericResponse) {
-	resp = GenerateGenericResponse(SUCC)
+	resp = GenerateGenericResponse(SUCCESS)
 	resp.Result = result
 	return
 }

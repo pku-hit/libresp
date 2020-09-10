@@ -6,13 +6,13 @@ func (resp *ListResponse) IsSuccess() (re bool) {
 	if resp == nil {
 		re = false
 	} else {
-		re = resp.Code == SUCC.Code
+		re = resp.Code == SUCCESS.Code
 	}
 	return
 }
 
 func GenerateListResponseSucc(result []*any.Any) (resp *ListResponse) {
-	resp = GenerateListResponse(SUCC)
+	resp = GenerateListResponse(SUCCESS)
 	resp.Result = result
 	return
 }

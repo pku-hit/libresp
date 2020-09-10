@@ -4,13 +4,13 @@ func (resp *Response) IsSuccess() (re bool) {
 	if resp == nil {
 		re = false
 	} else {
-		re = resp.Code == SUCC.Code
+		re = resp.Code == SUCCESS.Code
 	}
 	return
 }
 
 func GenerateResponseSucc() (resp *Response) {
-	resp = GenerateResponse(SUCC)
+	resp = GenerateResponse(SUCCESS)
 	return
 }
 
