@@ -11,13 +11,8 @@ func (resp *MapResponse) IsSuccess() (re bool) {
 	return
 }
 
-<<<<<<< HEAD
-func GenerateMapResponseSucc(result map[string]*any.Any) (resp *MapResponse) {
-	resp = GenerateMapResponse(SUCCESS)
-=======
 func (resp *MapResponse) GenerateMapResponseSucc(result map[string]*any.Any) {
 	resp.GenerateMapResponse(SUCCESS)
->>>>>>> c031e13b04ab4db207aacb7d2dea9b9c576d4ff3
 	resp.Result = result
 	return
 }

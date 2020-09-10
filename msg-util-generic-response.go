@@ -11,13 +11,8 @@ func (resp *GenericResponse) IsSuccess() (re bool) {
 	return
 }
 
-<<<<<<< HEAD
-func GenerateGenericResponseSucc(result *any.Any) (resp *GenericResponse) {
-	resp = GenerateGenericResponse(SUCCESS)
-=======
 func (resp *GenericResponse) GenerateGenericResponseSucc(result *any.Any) {
 	resp.GenerateGenericResponse(SUCCESS)
->>>>>>> c031e13b04ab4db207aacb7d2dea9b9c576d4ff3
 	resp.Result = result
 	return
 }
