@@ -1,1 +1,0 @@
-protoc --proto_path=$GOPATH/src:. --go_out=. *.proto
