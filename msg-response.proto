@@ -16,6 +16,12 @@ message GenericResponse {
     google.protobuf.Any result = 3;
 }
 
+message JsonResponse {
+    string code = 1;
+    string info = 2;
+    string result = 3;
+}
+
 message MapResponse {
     string code = 1;
     string info = 2;
